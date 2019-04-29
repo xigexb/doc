@@ -44,5 +44,5 @@ MySQL安装步骤
 	mysql -u root -p
 	[刚刚看到的初始化密码]
 	修改初始化密码，才能进行后续操作
-	set password = password('your password@');
+	set password = password('your password');
 	备注:密码包含大小写,特殊字符[. @ # $ % ^ * []  {} ; "" '' :] 长度8到20位
