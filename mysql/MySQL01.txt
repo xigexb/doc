@@ -1,0 +1,8 @@
+创建用户
+	create user '用户名'@'IP地址' identified by '密码';
+	备注：IP地址，是一个固定的IP地址，或者使用%，就是任意IP地址
+		  密码，数字，大小写，特殊字符都必要包含一个，密码长度在8-15位即可
+给用户授权
+	grant [权限操作] on  数据库.表 to '用户名'@'IP地址';
+	权限操作：create update delete select drop ....
+	
