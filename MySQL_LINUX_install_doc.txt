@@ -1,0 +1,48 @@
+MySQL安装步骤
+	1：查看mariadb
+		rpm -qa | grep -i mariadb
+	2：卸载
+		rpm -e --nodeps mariadb-xxxxxx
+	3：mysql的server端需要perl语言
+		yum install perl -y
+	4：下载MySQL安装包 官网,解压缩
+		tar xf mysql-xxxxx,rpm
+	5：按照依赖 libaio依赖 和 net-tools
+		yum -y install libaio
+		yum install net-tools
+	6：按照顺序按照
+		rpm -ivh mysql-community-common-xxxx.rpm
+		rpm -ivh mysql-community-libs-xxxx.rpm
+		rpm -ivh mysql-community-client-xxxxx.rpm
+		rpm -ivh mysql-community-server-xxx.rpm
+	7：	数据库目录：/var/lib/mysql/
+	   	命令配置：/usr/share/mysql  (mysql.server命令及配置文件)
+		相关命令：/usr/bin   (mysqladmin mysqldump等命令)
+		启动脚本：/etc/rc.d/init.d/   (启动脚本文件mysql的目录)
+		系统配置：/etc/my.conf
+	8：启动 停止
+		systemctl start mysqld.service
+		systemctl stop mysqld.service
+		使用service
+			启动
+				使用 service 启动：service mysqld start
+				使用 mysqld 脚本启动：/etc/inint.d/mysqld start
+				使用 safe_mysqld 启动：safe_mysqld&
+			停止
+				使用 service 启动：service mysqld stop
+				使用 mysqld 脚本启动：/etc/inint.d/mysqld stop
+				mysqladmin shutdown
+			重启
+				使用 service 启动：service mysqld restart
+				使用 mysqld 脚本启动：/etc/inint.d/mysqld restart
+	9：查看初始化信息(密码)
+		cat /var/log/mysqld.log
+		会有有一行：
+			A temporary password is generated for root@localhost: xxxxxxxx
+基本操作：
+	进入mysql
+	mysql -u root -p
+	[刚刚看到的初始化密码]
+	修改初始化密码，才能进行后续操作
+	set password = password('your password@');
+	备注:密码包含大小写,特殊字符[. @ # $ % ^ * []  {} ; "" '' :] 长度8到20位
